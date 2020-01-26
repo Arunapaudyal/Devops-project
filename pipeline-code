@@ -1,0 +1,42 @@
+pipeline {
+    tools{
+        jdk 'my-jdk'
+        maven 'my-maven'
+    }
+    agent any
+    stages{
+        stage('scm checkout'){
+            steps{
+                git 'https://github.com/Arunapaudyal/DevOpsClassCodes.git'
+            }
+            
+        }
+        stage('compile'){
+            steps{
+                sh 'mvn compile'
+            }
+        }
+        stage('codeReview'){
+            steps{
+                sh 'mvn pmd:pmd'
+            }
+            post{
+                always{
+                    pmd pattern:'target/pmd:xml'
+                }
+            }
+        }
+        stage('junitTest'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+        stage('package'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+        
+    }
+}
+
