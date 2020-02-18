@@ -1,0 +1,49 @@
+On jenkins Master:
+
+As root
+  useradd user1
+   passwd user1
+___________________
+
+ On jenkins linux slave:
+As root
+  useradd user1
+      passwd user1
+
+On both jenkins master and slave:
+
+vim /etc/ssh/sshd_config
+
+change Pass auth to yes
+
+vim /etc/sudoers---add below line
+
+user1 ALL=NOPASSWD:  ALL
+
+systemctl restart sshd--do these on both the machines
+
+On jenkins master;
+
+ su - user1
+
+ssh-keygen
+
+ssh-copy-id -i user1@ipofslave
+ssh ipofslave
+exit
+
+ssh connection established .
+
+On jenkins dashboard:
+
+
+
+
+
+
+Install java on linux slave:(yum install java-1.8.0-openjdk)
+
+Then launch the agent
+
+
+
