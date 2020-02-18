@@ -1,0 +1,9 @@
+How to install nexus
+
+wget http://download.sonatype.com/nexus/3/latest-unix.tar.gz
+tar -zxvf latest-unix.tar.gz
+cd nexus
+cd bin
+./nexus start
+
+http://13.126.73.45:8081/
