@@ -1,0 +1,148 @@
+375  java
+  376  yum install java-1.8.0-openjdk
+  377  java
+  380  java -version
+  381  clear
+  382  alternatives --config java
+  383  vim /etc/profile
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.222.b10-0.amzn2.0.1.x86_64
+export PATH=$JAVA_HOME/bin:$PATH
+
+  384  source /etc/profile
+  386  echo $JAVA_HOME
+
+  390  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  391  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+  392  yum install jenkins -y
+  393  systemctl start jenkins
+  394  clear
+  395  systemctl status jenkins
+-------------------------------------------------------------------
+ 425  cd /var/lib/jenkins/
+ 426  ls
+ 427  cat config.xml
+ 428  ls
+ 429  cd user
+ 430  cd users
+ 431  ls
+ 432  vim /etc/sysconfig/jenkins
+ 433  cd..
+ 434  cd ..
+ 435  vim /etc/profile
+---------------------------------------------------------------------------------------------
+MAVEN INSTALLATION
+
+
+  439  yum install maven
+  440  mvn --version
+  441  vim /etc/profile
+  442  source /etc/profile
+  443  clear
+  444  echo $MAVEN_HOME
+  445  cd /
+  446  clear
+  447  cd /tmp
+  448  ls
+  449  mkdir gitrepo
+  450  cd gitrepo/
+  451  git clone https://github.com/devops-trainer/DevOpsClassCodes.git
+  452  ls
+  453  cd DevOpsClassCodes/
+  454  ls
+  455  ll -al
+  456  ls
+  457  pwd
+  458  clear
+  459  
+
+  460  cd /tmp/gitrepo/DevOpsClassCodes/target/classes
+  461  ls
+  462  cd com
+  463  ls
+  464  cd edurekademo/
+  465  ls
+  466  cd utilities/
+  467  ls
+  468  cd ..
+  469  cd ...
+  470  cd ..
+  471  ls
+  472  mvn compile
+  473  mvn goal
+  474  echo $JAVA_HOME
+  475  clear
+  476  cd ..
+  477  cd /var/lib/jenkins/tools/
+  478  ls
+  479  echo $MAVEN_HOME
+  480  cd /var/lib/jenkins/workspace
+  481  ls
+  482  cd Compile/
+  483  ls
+  484  cd target/
+  485  ls
+  486  cd classes/
+  487  ls
+  488  cd com/
+  489  ls
+  490  cd edurekademo/
+  491  ls
+  492  cd utilities/
+  493  ls
+  494  cd /var/lib/jenkins/
+  495  cd workspace/
+  496  ls
+  497  clear
+  498  ls
+  499  cd CodeReview/
+  500  ls
+  501  cd target/
+  502  ls
+  503  pwd
+  504  cd ..
+  505  ls
+  506  cd UnitTest/
+  507  cd target/
+  508  ls
+  509  cd surefire-reports/
+  510  ls
+  511  pwd
+  512  ls
+  513  cd ..
+  514  cd /tmp
+  515  cd gitrepo/
+  516  ls
+  517  cd DevOpsClassCodes/
+  518  ls
+  519  mvn test
+  520  clear
+  521  cd /var/lib/jenkins/
+  522  ls
+  523  clear
+  524  cd /var/lib/jenkins/workspace/
+  525  ls
+  526  cd MetricCheck/
+  527  ls
+  528  cd target/
+  529  ls
+  530  cd site/
+  531  cd cobertura/
+  532  ls
+  533  pwd
+  534  cd ..
+  535  cd workspace/
+  536  ls
+  537  cd Package/
+  538  ls
+  539  cd target/
+  540  ls
+  541  cd ..
+  542  pwd
+  543  ls
+  544  clear
+  545  pwd
+  546  ls
+  547  history
+
+
