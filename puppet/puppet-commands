@@ -1,0 +1,124 @@
+25  puppet cert list --all
+  26  whereis puppet
+  27  exec bash -l
+  28  puppet cert list --all
+  29  puppet cert sign ip-172-31-5-172.ap-south-1.compute.internal
+  30  cd /etc/puppetlabs/code/environments/production/
+  31  cd manifests/
+  32  vim site.pp
+  33  puppet parser validate site.pp
+  34  systemctl start puppetserver
+  35  clear
+  36  cd /etc/puppetlabs/code/environments/production/manifests/
+  37  cat site.pp
+  38  clear
+  39  cd ..
+  40  ls
+  41  pwd
+  42  cd ..
+  43  ls
+  44  mkdir testing
+  45  ls
+  46  cd testing/
+  47  mkdir manifests
+  48  cd manifests/
+  49  pwd
+  50  vim site.pp
+  51  puppet parser validate site.pp
+  52  vim site.pp
+  53  puppet parser validate site.pp
+  54  clear
+  55  ls
+  56  vim site.pp
+  57  pwd
+  58  vim site.pp
+  59  puppet parser validate site.pp
+  60  vim site.pp
+  61  puppet parser validate site.pp
+  62  clear
+  63  cd ,,
+  64  cd ..
+  65  ls
+  66  cd ..
+  67  cd environments/
+  68  cd production/
+  69  ls
+  70  clear
+  71  cd manifests/
+  72  ls
+  73  vim site.pp
+  74  cat site.pp
+  75  clear
+  76  pwd
+  77  cd ..
+  78  ls
+  79  cd modules/
+  80  ls
+  81  clear
+  82  pwd
+  83  ls
+  84  puppet module generate preethi-deploy --environment production
+  85  clear
+  86  ls
+  87  cd deploy/
+  88  ls
+  89  cd manifests/
+  90  ls
+  91  vim init.pp
+  92  cd ..
+  93  pwd
+  94  ls
+  95  pwd
+  96  export PS1="\e[1;31m[\u@\h \W]\$ \e[m "
+  97  clear
+  98  ls
+  99  puppet module install puppetlabs-docker
+ 100  ls
+ 101  cd docker
+ 102  ls
+ 103  cd ..
+ 104  clear
+ 105  ls
+ 106  cd deploy/
+ 107  ls
+ 108  cd manifests/
+ 109  vim init.pp
+ 110  puppet parser validate init.pp
+ 111  cd ..
+ 112  cd manifests/
+ 113  ls
+ 114  vim site.pp
+ 115  puppet parser validate site.pp
+ 116  clear
+ 117  cd ,,
+ 118  cd ..
+ 119  cd modules/
+ 120  ls
+ 121  puppet module puppetlabs-vcsrepo
+ 122  puppet module install puppetlabs-vcsrepo
+ 123  ls
+ 124  cd deploy/
+ 125  cd manifests/
+ 126  vim init.pp
+ 127  puppet parser validate init.pp
+ 128  clear
+ 129  vim init.pp
+ 130  puppet parser validate init.pp
+ 131  vim init.pp
+ 132  puppet parser validate init.pp
+ 133  vim init.pp
+ 134  puppet parser validate init.pp
+ 135  cd ..
+ 136  ls
+ 137  puppet module build deploy
+ 138  cd ..
+ 139  puppet module build deploy
+ 140  cd deploy/
+ 141  ls
+ 142  cd pkg
+ 143  ls
+ 144  cd ..
+ 145  cd manifests/
+ 146  cat init.pp
+ 147  history
+
