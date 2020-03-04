@@ -1,0 +1,12 @@
+MAVEN INSTALLATION
+
+
+  439  yum install maven
+  440  mvn --version
+  441  vim /etc/profile
+             export MAVEN_HOME=/usr/share/maven
+  442  source /etc/profile
+  443  clear
+  444  echo $MAVEN_HOME
+
+
