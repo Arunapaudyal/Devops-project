@@ -1,0 +1,151 @@
+2  ansible -m ping webservers
+    3  ansible-doc -l
+    4  clear
+    5  ansible -m command -a "uptime" webservers
+    6  ansible-doc command
+    7  ansible -m command -a "uptime" webservers
+    8  clear
+    9  ansible -m user -a "name=john passwd=john"
+   10  ansible -m user -a "name=john passwd=john" webservers
+   11  ansible -m user -a "name=john passwordd=john" webservers --become
+   12  clear
+   13  ansible -m user -a "name=john password=john" webservers
+   14  ansible -m user -a "name=john password=john" webservers --become
+   15  ansible-doc user
+   16  history
+   17  cd /usr/lib/python2.7/site-packages/ansible/modules/system
+   18  ls
+   19  cd ..
+   20  ls
+   21  history
+   22  cd /
+   23  clear
+   24  ansible -m yum -a "name=httpd state=present" webservers --become
+   25  ansible-doc yum
+   27  ansible -m service -a "name=httpd state=running" webservers --become
+   28  ansible -m service -a "name=httpd state=started" webservers --become
+   29  ansible-doc service
+   31  ansible -m yum -a "name=git state=present" webservers --become
+   37  ansible -m git -a "repo=https://github.com/devops-trainer/repo2.git dest=/tmp/gitrepo" webservers --become
+ansible -m setup -a “filter=ansible_user*”
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  56  sudo vim playbook1.yml
+   57  ansible-playbook playbook1.yml --syntax-check
+   58  ansible-playbook playbook1.yml --host-lists
+   59  ansible-playbook playbook1.yml --list-hosts
+    61  ansible-playbook --check playbook1.yml
+   62  ansible-playbook playbook1.yml
+     65  sudo vim playbook2.yml
+   66  ansible-playbook playbook2.yml --syntax-check
+   67  ansible-playbook playbook2.yml
+   68  clear
+   69  ansible-playbook playbook2.yml
+   70  cat playbook2.yml
+   72  vim playbook1.yml
+   73  sudo vim playbook1.yml
+   74  ansible-playbook playbook1.yml --syntax-check
+   75  sudo vim playbook1.yml
+   76  pwd
+   78  sudo vim index.html
+   79  ansible-playbook playbook1.yml
+   80  clear
+   81  ls
+   82  cd roles
+   83  ls
+   84  sudo mkdir tomcat
+   85  ls
+   86  cd tomcat/
+   87  ls
+   88  sudo mkdir files handlers tasks meta vars
+   89  ls
+   90  clear
+   91  ls
+   92  cat /etc/ansible/playbook2.yml
+   93  cd tasks/
+   94  sudo vim main.yml
+   95  cd ..
+   96  clear
+   97  ls
+   98  cd handlers/
+   99  sudo vim main.yml
+  100  cd ..
+  101  ls
+  102  cd ..
+  103  tree
+  104  sudo yum install tree
+  105  sudo yum install tree -y
+  106  clear
+  107  tree
+  108  cd ..
+  109  ls
+  110  sudo vim site.yml
+  111  clear
+  112  ls
+  113  ansible-playbook site.yml
+  114  cd /etc/ansible/roles/tomcat/tasks/
+  115  sudo vim main.yml
+  116  cd /etc/ansible/roles/tomcat/tasks/cd ..
+  117  cd ..
+  118  clear
+  119  ls
+  120  ansible-playbook site.yml
+  121  clear
+  122  sudo vim site.yml
+  123  ls
+  124  cd roles
+  125  ls
+  126  sudo mkdir apache
+  127  ls
+  128  cd apache/
+  129  sudo mkdir files handlers tasks meta vars
+  130  ls
+  131  cd tasks
+  132  cat /etc/ansible/playbook1.yml
+  133  sudo vim main.yml
+  134  cd ..
+  135  cd handlers/
+  136  sudo vim main.yml
+  137  clear
+  138  cd ..
+  139  ls
+  140  cd tasks/
+  141  ls
+  142  sudo vim main.yml
+  143  cd ..
+  144  ls
+  145  cd vars/
+  146  sudo vim main.yml
+  147  cd ..
+  148  ls
+  149  cd files/
+  150  sudo vim index.html
+  151  cd ..
+  152  ls
+  153  cd ..
+  154  tree
+  155  clear
+  156  tree
+  157  cd apache/
+  158  cd tasks/
+  159  cat main.yml
+  160  clear
+  161  cd ..
+  162  ls
+  163  sudo vim site.yml
+  164  ansible-playbook site.yml --syntax-check
+  165  ansible-playbook site.yml
+  166  cat site.yml
+  167  clear
+  168  ls
+  169  cd roles
+  177  sudo ansible-galaxy install --roles-path /etc/ansible/roles lean_delivery.jenkins
+  178  ls  179  cd ..
+  180  ls
+  181  sudo vim site.yml
+  182  ansible-playbook site.yml
+  183  clear
+  184  ls
+  185  sudo vim deploy.yml
+  186  ansible-playbook deploy.yml --syntax-check
+  187  ansible-playbook deploy.yml
+
