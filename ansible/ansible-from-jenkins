@@ -1,0 +1,13 @@
+ansible playbook from jenkins
+
+1)jenkins master 
+
+2)ansible setup--- acm  --ansible host(ssh)
+
+3)acm  -- add slave to jenkins(ssh method)
+
+4)install ansible plugin on jenkins master
+
+5)create a new job--run ansible playbook-- tie the job to acm(jenkins slave)
+
+
