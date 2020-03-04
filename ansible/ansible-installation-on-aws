@@ -1,0 +1,31 @@
+Ansible installation on linux AWS
+On both Ansible Controller machine and host machine:
+sudo su -
+vim /etc/ssh/sshd_config
+PasswordAuthentication yes
+#PermitEmptyPasswords no
+#PasswordAuthentication no
+passwd ec2-user
+Vim /etc/sudoers
+ec2-user ALL=NOPASSWD: ALL
+ systemctl restart sshd
+On Ansible Controller machine:
+sudo su -
+yum list  | grep ansible
+   yum install epel-release
+   yum list -y | grep ansible
+  yum install ansible
+   ansible –version 
+Vim /etc/ansible/hosts
+Add ip of ansible host under
+[webservers]
+Ip of ansible host
+su - ec2-user
+ssh-keygen
+ssh-copy-id -i ec2-user@ipofansiblehost
+ssh ec2-user@ipofansiblehost
+Exit
+export PS1="\e[1;31m[\u@\h \W]\$ \e[m "
+ 
+ 
+
