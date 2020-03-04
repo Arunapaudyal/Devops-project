@@ -1,0 +1,37 @@
+On Puppetmaster
+hostname -f
+hostname -i
+export PS1="\e[1;31m[\u@\h \W]\$ \e[m "
+vim /etc/hosts
+	172.31.39.125 ip-172-31-39-125.ap-south-1.compute.internal
+          52.66.210.25 ip-172-31-47-158.ap-south-1.compute.internal
+rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+yum install puppetserver -y
+vim /etc/puppetlabs/puppet/puppet.conf
+          	dns_alt_names= private dns of master(same m/c)
+grep JAVA_ARGS /etc/sysconfig/puppetserver
+vi /etc/sysconfig/puppetserver
+   	JAVA_ARGS="-Xms512m -Xmx512m"
+ exec bash -l
+systemctl start puppetserver
+systemctl status puppetserver
++++++++++++++++++++++++++++++++++++++++++++++++on PuppetAgent:
+hostname -f
+hostname -i
+export PS1="\e[1;35m[\u@\h \W]\$ \e[m "
+vim /etc/hosts	
+	172.31.39.125 ip-172-31-39-125.ap-south-1.compute.internal
+52.66.210.25 ip-172-31-47-158.ap-south-1.compute.internal
+rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+yum install puppet -y
+vim /etc/puppetlabs/puppet/puppet.conf
+          	server=private dns of master
+ exec bash -l
+  systemctl start puppet
+   puppet agent --test +++++++++++++++++++++++++++++++++++++++++++++++
+On Master:
+puppet cert list
+puppet cert sign privatednsofslave
+On PuppetAgent:
+ puppet agent --test
+
