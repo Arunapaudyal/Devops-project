@@ -1,0 +1,45 @@
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+ sudo chmod +x /usr/local/bin/docker-compose
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  862  docker-compose -version
+   866  clear
+  867  cd /
+  868  mkdir compose
+  869  cd compose/
+  870  vim docker-compose.yml
+  871  docker images
+  872  systemctl start docker
+  873  docker images
+  874  docker ps -a
+  875  docker system prune --all
+  876  docker ps -a
+  877  docker images
+  878  clear
+  879  docker-compose up -d
+  880  docker images
+  881  docker ps
+  882  cat docker-compose.yml
+++++++++++++++++++++++++++++++++++++++++
+wordpress:
+ image: wordpress
+ links:
+ - wordpress_db:mysql
+ ports:
+ - "7070:80"
+
+wordpress_db:
+ image: mariadb
+ environment:
+      MYSQL_ROOT_PASSWORD: edureka
+
+phpadmin:
+ image: corbinu/docker-phpmyadmin
+ links:
+ - wordpress_db:mysql
+ ports:
+ - "8181:80"
+ environment:
+     MYSQL_USERNAME: root
+     MYSQL_ROOT_PASSWORD: edureka
++++++++++++++++++++++++++++++++++++++++++++++++
+
