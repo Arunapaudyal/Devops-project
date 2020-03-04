@@ -1,0 +1,22 @@
+On Linux:
+curl -L https://github.com/docker/machine/releases/download/v0.14.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine
+   48 chmod +x /tmp/docker-machine
+   49 cp /tmp/docker-machine /usr/local/bin/docker-machine
+   50 docker-machine -version
+ docker-machine create --driver amazonec2 --amazonec2-access-key xxx --amazonec2-secret-key xxxx  --amazonec2-region ap-south-1 aws01
+   52 docker-machine ls
+   54 docker-machine env aws04
+   55 eval $(docker-machine env aws04)
+   56 docker images
+   57 docker-machine ls
+   64  docker images
+   65 eval $(docker-machine env -u)
+   66 docker images  
+or
+87 docker-machine ssh aws04
+   	Sudo docker images
+  	Sudo docker run -itd -P nginx
+       	Curl ip:32768n
+   88 docker-machine ls
+ 
+
