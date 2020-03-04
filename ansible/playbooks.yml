@@ -1,0 +1,68 @@
+Playbook1.yml
+
+  handlers:
+  - name: re---
+- hosts: webservers
+  become: true
+  become_user: root
+  vars:
+   src_path: /etc/ansible
+   dest_path: /var/www/html
+  tasks:
+  - name: Install httpd
+    yum: name=httpd state=present
+  - name: Start service
+    service: name=httpd state=started
+  - name: Deploy html file
+    copy: src={{src_path}}/index.html  dest={{dest_path}}
+    notify: restart httpdstart httpd
+    service: name=httpd state=restarted
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Playbook2.yml
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: Install tomcat
+    yum: name=tomcat state=present
+  - name: Start tomcat
+    service: name=tomcat state=started
+  - name: Deploy war file
+    get_url: url=https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war dest=/usr/share/tomcat
+/webapps
+    notify: restart tomcat
+  handlers:
+  - name: restart tomcat
+    service: name=tomcat state=restarted
+++++++++++++++++++++++++++++++++++++++++++++++++++
+Site.yml for amazon linux host
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  vars:
+    jenkins2_config_http_port: 9090
+  roles:
+  - tomcat
+  - apache
+  - lean_delivery.jenkins
++++++++++++++++++++++++++++++++++++++++++++++++
+Deploy.yml
+---
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+  - name: Install docker
+    yum: name=docker state=present
+  - name: Start docker
+    service: name=docker state=started
+  - name: Get the dockerfile from github
+    git: repo="https://github.com/devops-trainer/dockerdemo.git" dest=/tmp/dockerdir
+  - name: Build the dockerfile
+    command: chdir=/tmp/dockerdir docker build -t deploy:ansible .
+  - name: Run the docker image
+    command: docker run -itd -P deploy:ansible
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
