@@ -1,0 +1,106 @@
+ 889  curl -L https://github.com/docker/machine/releases/download/v0.14.0/docker-machine-`uname -s`-`una
+me -m` >/tmp/docker-machine
+  890  chmod +x /tmp/docker-machine
+  891  cp /tmp/docker-machine /usr/local/bin/docker-machine
+  892  docker-machine -version
+  893  docker-machine ls
+  894  clear
+    896  docker-machine create --driver amazonec2 --amazonec2-access-key xxxx --amazonec2-secret-key xxxx  --amazonec2-region ap-south-1 --amazonec2-open-port 2377 manager
+  897  docker-machine ls
+  898  docker-machine create --driver amazonec2 --amazonec2-access-key xxxx --amazonec2-secret-key xxxx  --amazonec2-region ap-south-1 worker1
+  899  docker-machine create --driver amazonec2 --amazonec2-access-key xxxx --amazonec2-s
+ecret-key xxxxx  --amazonec2-region ap-south-1 worker2
+  900  docker-machine ls
+  901  clear
+  902  docker-machine ls
+  903  eval $(docker-machine env manager)
+  904  docker-machine active
+  905  docker swarm init --advertise-addr 172.31.43.18
+  906  docker-machine node ls
+  907  docker node ls
+  908   eval $(docker-machine env -u)
+  909   eval $(docker-machine env worker1)
+  910  docker-machine active
+  911  docker swarm join --token SWMTKN-1-55u7u18z598cfcsi4mnd0b404yzulz5z0wp7p9uhnfg9nczbv0-3nplt8irxtn1
+uzuejmsc3aye7 172.31.43.18:2377
+  912   eval $(docker-machine env -u)
+  913   eval $(docker-machine env worker2)
+  914  docker swarm join --token SWMTKN-1-55u7u18z598cfcsi4mnd0b404yzulz5z0wp7p9uhnfg9nczbv0-3nplt8irxtn1
+uzuejmsc3aye7 172.31.43.18:2377
+  915   eval $(docker-machine env -u)
+  916  eval $(docker-machine env manager)
+  917  clear
+  918  docker node ls
+  919  docker swarm join-token worker
+  920  history
+  921  clear
+  922  docker-machine active
+  923  docker service create -p 8000nginx
+  924  docker service create --name mysvc -p 8000:80 nginx
+  925  docker service ls
+  926  docker service ps mysvc
+  927  docker service scale mysvc=10
+  928  docker service ps mysvc
+  929  docker ps
+  930   eval $(docker-machine env -u)
+  931   eval $(docker-machine env worker1)
+  932  docker ps
+  933   eval $(docker-machine env -u)
+  934   eval $(docker-machine env worker2)
+  935  docker ps
+  936   eval $(docker-machine env -u)
+  937   eval $(docker-machine env manager)
+  938  docker service ps mysvc
+  939  docker-machine ls
+  940  docker-machine rm worker1
+  941  docker service ps mysvc
+  942  clear
+  943  docker service ps mysvc
+  944  svc.3      nginx  worker2
+  945  docker-machine create --driver amazonec2 --amazonec2-access-key xxxxx --amazonec2-secret-key xxxx  --amazonec2-region ap-south-1 worker3
+  946  docker swarm join-token worker
+  947  eval $(docker-machine env worker3)
+  948  docker swarm join --token SWMTKN-1-55u7u18z598cfcsi4mnd0b404yzulz5z0wp7p9uhnfg9nczbv0-3nplt8irxtn1
+uzuejmsc3aye7 172.31.43.18:2377
+  949  eval $(docker-machine env -u)
+  950  eval $(docker-machine env manager)
+  951  docker node ls
+  952  docker service ps mysvc
+  953  docker service scale mysvc=15
+  954  docker service ps mysvc
+  955  docker node update --availability drain manager
+  956  docker service ps mysvc
+  957  docker node update --availability active manager
+  958  docker service ps mysvc
+  959  clear
+  960  docker node update --availability drain worker1
+  961  docker node ls
+  962  docker node update --availability drain worker3
+  963  docker node ls
+  964  docker swarm join-token manager
++++++++++++++++++++++++++++++++++++++++++++++++
+ 1043  docker-machine ls
+ 1044  eval $(docker-machine env manager)
+ 1045  docker network ls
+ 1046  docker service ls
+ 1047  docker service create --name mysvc -P 8000:80 nginx
+ 1048  docker service create --name mysvc -p 8000:80 nginx
+ 1049  docker service ps mysvc
+ 1050  clear
+ 1051  docker ps
+ 1052  docker inspect 74c50f118356
+ 1053  clear
+ 1054  docker service rm mysvc
+ 1055  docker network ls
+ 1056  docker network create -d overlay o1
+ 1057  docker network ls
+ 1058  docker service create --name newsvc --network o1 -p 8001:80 nginx
+ 1059  docker service ps newsvc
+ 1060  clear
+ 1061  docker service ps newsvc
+ 1062  docker ps
+ 1063  docker inspect de20e684472b
+ 1064  history
+ 1065  docker inspect de20e684472b
+ 1066  ip addr show
+
