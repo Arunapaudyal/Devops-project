@@ -1,0 +1,59 @@
+2  yum install docker -y
+    3  systemctl start docker
+       7  docker swarm init --advertise-addr 172.31.1.88
+    8  docker node ls
+    9  clear
+   10  docker node ls
+   11  docker swarm join-token worker
+   12  docker node ls
+   13  clear
+   14  docker service create --name mysvc -p 8000:80 nginx
+   15  docker service ls
+   16  docker service ps mysvc
+   17  docker ps
+   18  clear
+   19  docker service scale mysvc=5
+   20  docker service ls
+   21  docker service ps mysvc
+   22  docker ps
+   23  docker node ls
+   24  docker service ps mysvc
+   25  clear
+   26  docker service ps mysvc
+   28  docker node ls
+   35  docker node update --availability drain ip-172-31-47-148.ap-south-1.compute.internal
+   36  docker node ls
+   37  docker service ps mysvc
+   38  docker service ls
+   39  docker ps
+   40  history
+   41  docker node update --availability active ip-172-31-47-148.ap-south-1.compute.internal
+   42  docker node ls
+   43  docker service ps mysvc
+   44  clear
+   45  docker network ls
+   46  clear
+   47  docker network ls
+   48  docker ps
+   49  docker inspect aac216bd7b60
+   50  clear
+   51  docker network ls
+   52  docker service ls
+   53  docker service rm mysvc
+   54  docker network create -d overlay o1
+   55  docker service ls
+   56  docker network ls
+   57  clear
+   58  docker network ls
+   59  docker service create --name newsvc --network o1 -p 8001:80 nginx
+   60  docker service ls
+   61  docker service ps
+   62  docker service ps newsvc
+   63  docker ps
+   64  docker inspect cc639a238660
+   65  history
+
+On worker nodes:
+
+docker swarm join --token SWMTKN-1-2bihrx1al5zbp64q1g1x8whqm8dntfh1upxjie1pxpkrb12pul-8wjhgapc953ite1xiqwllx4y2 172.31.1.88:2377
+
