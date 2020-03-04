@@ -1,0 +1,165 @@
+ 584  docker
+  585  yum install docker
+  586  clear
+  587  systemctl start docker
+  588  systemctl status docker
+  589  clear
+  590  docker images
+  591  docker run hello-world
+  592  docker images
+  593  docker ps -a
+  594  clear
+  595  history
+  596  docker ps
+  597  clear
+  598  docker ps -a
+  599  docker run hello-world
+  600  docker images
+  601  docker ps
+  602  docker ps -a
+  603  cd /var/lib/docker
+  604  ls
+  605  clear
+  606  docker images
+  607  pwd
+  608  clear
+  609  docker images
+  610  docker run --name mycontainer hello-world
+  611  docker ps -a
+  612  history
+  613  clear
+  614  cd /
+  615  clear
+  616  docker search ubuntu
+  617  docker images
+  618  clear
+  619  docker images
+  620  docker pull devopstrainer/myrepo1:v3.0
+  621  clear
+  622  docker images
+  623  docker tag docker.io/devopstrainer/myrepo1:v3.0 docker.io/devopstrainer/myrepo1:v4.0
+  624  docker images
+  625  docker push docker.io/devopstrainer/myrepo1:v4.0
+  626  docker login
+  627  docker push docker.io/devopstrainer/myrepo1:v4.0
+
+
+  701  docker volume ls
+  702  docker volume create vol1
+  703  docker volume ls
+  704  docker volume inspect vol1
+  705  cd /var/lib/docker/volumes/vol1/_data
+  706  ls
+  707  pwd
+  708  clear
+  709  cd /
+  710  docker run -it -v vol1:/mylogs ubuntu
+  711  docker ps -a
+  712  docker inspect volume vol1
+  713  docker volume inspect vol1
+  714  cd /var/lib/docker/volumes/vol1/_data
+  715  ls
+  716  cat file1.txt
+  717  touch file2.txt
+  718  echo "Iam from host" >> file2
+  719  echo "Iam from host" >> file2.txt
+  720  l
+  721  ls
+  722  docker ps -a
+  723  docker attach 000248e04a29
+  724  docker start 000248e04a29
+  725  docker attach 000248e04a29
+  726  docker rmi 000248e04a29
+  727  docker rm 000248e04a29
+  728  docker ps -a
+  729  pwd
+  730  ls
+  731  cat file2.txt
+  732  clear
+  733  docker run -it -v vol1:/newlogs ubuntu
+  734  docker run -it -v vol1:/anothernewlogs ubuntu
+  735  pwd
+  736  history
+  737  clear
+  738  pwd
+  739  cd /tmp
+  740  ls
+  741  docker run -it -v /tmp:/logs ubuntu
+  742  docker run -it -v /tmp:/logs:Z ubuntu
+  743  clear
+  744  history
+  745  clear
+  746  docker run -it ubuntu
+  747  docker ps
+  748  docker ps -a
+  749  clear
+  750  docker cp adoring_saha:/file1.txt /tmp
+  751  ls
+  752  cat file1.txt
+  753  docker cp /tmp/date.txt adoring_saha:/date.txt
+  754  docker ps -a
+  755  docker start 2549d669aeb4
+  756  docker attach 2549d669aeb4
+  757  history
+  758  clear
+  759  docker run -it ubuntu
+  760  docker ps
+  761  docker commit  kind_wing myownimage:vim
+  762  docker images
+  763  docker run -it myownimage:vim
+  764  clear
+  765  docker images
+  766  docker history myownimage:vim
+  767  docker history ubuntu
+  768  clear
+  769  docker images
+  770  docker push myownimage:vim
+  771  docker tag myownimage:vim docker.io/devopstrainer/myownimage:vim
+  772  docker images
+  773  docker push docker.io/devopstrainer/myownimage:vim
+  774  clear
+  775  cd /var/lib/docker
+  776  ls
+  777  docker images
+  778  history
+  779  clear
+  780  cd /
+  781  mkdir dockerfiles
+  782  cd dockerfiles/
+  783  ls
+  784  vim dockerfile
+  785  cat dockerfile
+  786  docker build -t myownimage:dockerfile .
+  787  docker images
+  788  clear
+  789  docker images
+  790  docker run -it myownimage:dockerfile
+  791  docker run -it myownimage:dockerfile /bin/bash
+  792  cat dockerfile
+  793  clear
+  794  cat dockerfile
+  795  docker run -itd tomcat
+  796  clear
+  797  docker ps
+  798  docker inspect 08c7a9884a32
+  799  clear
+  800  curl 172.17.0.3:8080
+  801  ip addr show
+  802  clear
+  803  curl 172.31.11.44:8080
+  804  clear
+  805  docker ps
+  806  docker inspect elastic_bell
+  807  clear
+  808  docker run -itd -P tomcat
+  809  docker ps
+  810  docker run -itd -p 9999:8080 tomcat
+  811  docker ps
+  812  docker inspect 159cfeed8b68
+  813  clear
+  814  history
+  815  docker ps
+  816  docker inspect cc68bd577bf7
+  817  history
+  818   docker run -itd -p 9090:8080 tomcat
+
