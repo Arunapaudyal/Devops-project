@@ -1,0 +1,103 @@
+Each phase is executed by plugins.
+Each plugin offers multiple goals.
+Goal is a task which is executed by a plugin.
+Mvn cmd
+Phase
+plugin:goal
+compile
+compiler:compile
+test-compile
+compiler:testCompile
+test
+surefire:test
+package
+jar:jar
+ 
+Maven commands follow the below syntax:
+mvn [phase]
+mvn [plugin name]:[goal]
+These are the phases we are going to execute in our project:
+                                      	
+                          	          POM.xml(dev)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+           	Reads pom
+Maven  
+ 
+ 
+ 
+ 
+1)read the pom.xml
+2)downloads the plugins into local repo and executes the tasks
+ 
+ 
+Tasks
+plugins
+mvn command
+compile
+ Compiler 
+mvn compile
+Code Review
+Pmd plugin
+mvn pmd:pmd
+Unit Test
+Surefire Plugin
+mvn test
+Coverage Analysis
+Cobertura plugin
+mvn cobertura:cobertura
+Package
+Jar plugin
+mvn package
+ 
+Compile:
+Maven compiler plugin:
+mvn compile
+https://maven.apache.org/plugins/maven-compiler-plugin/index.html
+CodeReview:
+PMD:
+pmd:pmd
+https://maven.apache.org/plugins/maven-pmd-plugin/
+CheckStyle:
+https://maven.apache.org/plugins/maven-checkstyle-plugin/
+FindBugs
+Test:
+Surefire plugin
+Code Coverage Analysis:
+Cobertura plugin
+cobertura:cobertura
+https://www.mojohaus.org/cobertura-maven-plugin/
+Package:
+Jar plugin
+ 
+
