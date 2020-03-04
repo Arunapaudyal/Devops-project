@@ -1,0 +1,45 @@
+On NagiosServer:
+
+    1  yum install httpd php gcc glibc glibc-comman gd gd-devel make net-snmp unzip -y
+   3  wget https://sourceforge.net/projects/nagios/files/nagios-4.x/nagios-4.3.2/nagios-4.3.2.tar.gz
+    4  wget https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
+    5  tar -zxvf nagios-4.3.2.tar.gz
+    6  tar -zxpvf nagios-plugins-2.2.1.tar.gz
+    7  useradd nagios
+    8  passwd nagios
+    9  groupadd nagcmd
+   10  usermod -G nagcmd nagios
+   11  usermod -G nagcmd apache
+   12  cd nagios-4.3.2
+   13  ./configure --with-command-group=nagcmd
+   14  make all
+   15  make install
+   16  make install-init
+   17  make install-commandmode
+   18  make install-config
+   19  make install-webconf
+   20  htpasswd -s -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+   21  vi /usr/local/nagios/etc/objects/contacts.cfg
+   22  systemctl restart httpd
+   23  cd ..
+   24  cd nagios-plugins-2.2.1/
+   25  ./configure --with-nagios-user=nagios --with-nagios-group=nagios
+   26  make
+   27  make install
+   28  /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+   29  systemctl enable  nagios
+   30  systemctl start  nagios
+   31  systemctl restart httpd
+systemctl restart  nagios
+open the browser http://ip address/nagios
+uid:nagiosadmin(set in the previous steps)
+pwd: nagios
+On Nagios Host (linux):
+    7  rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    8  yum install nrpe nagios-plugins-all -y
+    9  vim /etc/nagios/nrpe.cfg
+   10  systemctl enable nrpe
+   11  systemctl start nrpe
+
+
+
