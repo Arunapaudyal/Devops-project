@@ -1,0 +1,75 @@
+To install pip
+1.     Use the curl command to download the installation script. The following command uses the -O (uppercase "O") parameter to specify that the downloaded file is to be stored in the current folder using the same name it has on the remote host.
+$ curl -O https://bootstrap.pypa.io/get-pip.py
+ 
+2.     Run the script with Python to download and install the latest version of pip and other required support packages.
+$ python get-pip.py --user
+Or use the following.
+$ python3 get-pip.py --user
+When you include the --user switch, the script installs pip to the path ~/.local/bin.
+ 
+3.     Ensure the folder that contains pip is part of your PATH variable.
+1. 	Find your shell's profile script in your user folder. If you're not sure which shell you have, run echo $SHELL.
+2. 	$ ls -a ~
+.  ..  .bash_logout  .bash_profile  .bashrc  Desktop  Documents  Downloads
+·   	Bash – .bash_profile, .profile, or .bash_login
+·   	Zsh – .zshrc
+·   	Tcsh – .tcshrc, .cshrc or .login
+3. 	Add an export command at the end of your profile script that's similar to the following example.
+export PATH=~/.local/bin:$PATH
+This command inserts the path, ~/.local/bin in this example, at the front of the existing PATH variable.
+4. 	Reload the profile into your current session to put those changes into effect.
+$ source ~/.bash_profile
+ 
+4.     Now you can test to verify that pip is installed correctly.
+$ pip --version
+pip 19.2.3 from ~/.local/lib/python3.7/site-packages (python 3.7)
+Install the AWS CLI version 1 with pip
+Use pip to install the AWS CLI.
+$ pip3 install awscli --upgrade --user
+When you use the --user switch, pip installs the AWS CLI to ~/.local/bin.
+Verify that the AWS CLI installed correctly.
+$ aws --version
+aws-cli/1.16.273 Python/3.7.3 Linux/4.14.133-113.105.amzn2.x86_64 botocore/1.13.0
+ 
+To install or upgrade eksctl on Linux using curl
+1.     Download and extract the latest release of eksctl with the following command.
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+ 
+2.     Move the extracted binary to /usr/local/bin.
+sudo mv /tmp/eksctl /usr/local/bin
+ 
+3.     Test that your installation was successful with the following command.
+eksctl version
+Note
+The GitTag version should be at least 0.11.0. If not, check your terminal output for any installation or upgrade errors.
+To install kubectl on Linux
+1.     Download the Amazon EKS-vended kubectl binary for your cluster's Kubernetes version from Amazon S3:
+·       Kubernetes 1.14:
+curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64
+ 1.     Apply execute permissions to the binary.
+chmod +x ./kubectl
+ 
+2.     Copy the binary to a folder in your PATH. If you have already installed a version of kubectl, then we recommend creating a $HOME/bin/kubectl and ensuring that $HOME/bin comes first in your $PATH.
+ 
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+ 
+3.     (Optional) Add the $HOME/bin path to your shell initialization file so that it is configured when you open a shell.
+Note
+This step assumes you are using the Bash shell; if you are using another shell, change the command to use your specific shell initialization file.
+echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
+ 4.     After you install kubectl, you can verify its version with the following command:
+kubectl version --short --client
+Installing aws-iam-authenticator
+Download the Amazon EKS-vended aws-iam-authenticator binary from Amazon S3:
+curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator
+Apply execute permissions to the binary.
+chmod +x ./aws-iam-authenticator
+Copy the binary to a folder in your $PATH. We recommend creating a $HOME/bin/aws-iam-authenticator and ensuring that $HOME/bin comes first in your $PATH.
+mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin
+Add $HOME/bin to your PATH environment variable.
+echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+Test that the aws-iam-authenticator binary works.
+aws-iam-authenticator help 
+
+
